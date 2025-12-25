@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, #ffe6f2, #ffb3d9);
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Button */
+button {
+  font-size: 28px;
+  padding: 20px 40px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  background: #ff5fa2;
+  color: white;
+  box-shadow: 0 0 25px rgba(255,95,162,0.8);
+}
+
+/* Banner with crown image above 18 */
+#banner {
+  display: none;
+  font-family: 'Pacifico', cursive;
+  color: #ff1a8c;
+  font-size: 40px;
+  margin-top: 20px;
+  text-shadow: 0 0 20px rgba(255,95,162,0.8);
+  transform: rotate(-3deg);
+}
+
+#banner span {
+  position: relative;
+  display: inline-block;
+  font-size: 60px; /* bigger 18 */
+}
+
+#banner span img {
+  position: absolute;
+  top: -10px; /* crown sits exactly like before */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: auto;
+}
+
+/* Message (tilted slightly) */
+#message {
+  max-width: 750px;
+  margin: 30px auto;
+  font-family: 'Pacifico', cursive;
+  font-size: 18px;
+  color: #b30059;
+  text-align: left;
+  line-height: 1.7;
+  opacity: 0;
+  transition: opacity 2s;
+  border: 4px solid #ff4d94;
+  padding: 25px;
+  border-radius: 15px;
+  background: #fff0f5;
+  box-shadow:
+    0 0 25px rgba(255,95,162,0.8),
+    0 0 50px rgba(255,182,193,0.6);
+  transform: rotate(-1deg);
+}
+
+/* Photos */
+.photo-container {
+  display: inline-block;
+  margin: 15px;
+  opacity: 0;
+  transition: opacity 1.2s;
+  border: 4px solid #ff4d94;
+  border-radius: 15px;
+  background: #fff0f5;
+  padding: 5px;
+  box-shadow:
+    0 0 25px rgba(255,95,162,0.8),
+    0 0 50px rgba(255,182,193,0.6);
+}
+
+.photo-container img {
+  max-width: 240px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.photo-container img:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 35px rgba(255,102,178,1);
+}
+
+.caption {
+  display: none;
+  margin-top: 8px;
+  font-size: 15px;
+  color: #ff2f92;
+  font-style: italic;
+}
+
+/* Teddy */
+.teddy {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: -120px;
+  font-size: 70px;
+  animation: teddyRun 10s linear infinite;
+  z-index: 1;
+}
+
+@keyframes teddyRun {
+  from { left: -120px; }
+  to { left: 110vw; }
+}
+
+/* Sparkles */
+.sparkle {
+  position: fixed;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+  font-size: 18px;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-50px); opacity: 1; }
+}
+
+/* Bottom box */
+#bottomBox {
+  opacity: 0;
+  transition: opacity 1.5s;
+  width: 90%;
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 15px;
+  border-radius: 15px;
+  background: #fff0f5;
+  border: 4px solid #ff4d94;
+  cursor: pointer;
+  font-family: 'Pacifico', cursive;
+  color: #ff1a8c;
+  font-size: 18px;
+  box-shadow:
+    0 0 25px rgba(255,95,162,0.8),
+    0 0 50px rgba(255,182,193,0.6);
+}
+
+#secretMessage {
+  display: none;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #b30059;
+}
+
+/* Confetti */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<button id="startBtn">Press Me 💗</button>
+<h1 id="banner">HAPPY <span>18<img src="crown.png"></span>TH BIRTHDAY BABY!</h1>
+
+<div id="message">
+  <p id="typedParagraph"></p>
+</div>
+
+<div class="photo-container"><img src="photo1.jpg"><div class="caption">iloveyouforever</div></div>
+<div class="photo-container"><img src="photo2.jpg"><div class="caption">please dont ever leave me</div></div>
+<div class="photo-container"><img src="photo3.jpg"><div class="caption">this is supposed to be a secret feature</div></div>
+<div class="photo-container"><img src="photo4.jpg"><div class="caption">i'm scared of losing you, youre my everything</div></div>
+<div class="photo-container"><img src="photo5.jpg"><div class="caption">i hope when you realize this feature you realize how much you truly mean to me</div></div>
+<div class="photo-container"><img src="photo6.jpg"><div class="caption">i hope and pray everyday nothing comes between us and our love</div></div>
+<div class="photo-container"><img src="photo7.jpg"><div class="caption">i'll make you feel special every birthday no matter what</div></div>
+<div class="photo-container"><img src="photo8.jpg"><div class="caption">the only thing that's gonna split us is death haha</div></div>
+
+<div id="bottomBox">
+  Click me for a special message 💌
+  <div id="secretMessage">
+    Many more memories to come my beloved, this is just the start of it.
+  </div>
+</div>
+
+<audio id="song" src="happy.mp3"></audio>
+<audio id="clickSound" src="click.mp3"></audio>
+<canvas id="confetti"></canvas>
+<div class="teddy">🧸</div>
+
+<script>
+const startBtn = document.getElementById('startBtn');
+const banner = document.getElementById('banner');
+const message = document.getElementById('message');
+const typedParagraph = document.getElementById('typedParagraph');
+const song = document.getElementById('song');
+const clickSound = document.getElementById('clickSound');
+const photos = document.querySelectorAll('.photo-container');
+const bottomBox = document.getElementById('bottomBox');
+const teddy = document.querySelector('.teddy');
+
+song.volume = 0.35;
+clickSound.volume = 0.4;
+
+// Full long paragraph
+const paragraphText = `Happy 18th birthday baby. Iloveyousomuch Deki I'm so happy you're letting me spend this day with you mylove it means more to me than you even think it does! I'm sorry if this is corny or kind of bad I haven't done scripting in years! I tried my hardest and I hope it's enough to make you smile even the tiniest bit. I'm so happy I've gotten the chance to date you and make you mine because you've helped me in many secret ways you can never imagined and I don't think I would be here if it weren't for you. You mean the entire world to me, and I'll learn new ways every time just like this to express my growing infinite love for you Deki. You're 18 but still my baby at heart, and that'll never change! that was so corny lmfao but seriously Iloveyousomuch and no one and anything can get in between us.. the only way we'd get split apart is death but even then i'd haunt you so I can make sure you're safe and doing well in life. I never hosted a girl birthday despite what you think so I hope my first attempt at doing so is good enough but I accept feedback from you as well lol. And if this isn't enough we can always go out for dinner, or anything you want my treat I just want you to know even if you think birthdays are dumb I think otherwise! it's YOUR special day and I'll prove it to you by making it truly all about you baby. Ever since we've met I've grown to learn more about what it's like to be in a proper relationship and honestly you made me mature so much in a good way. I know I can be better for you and towards you, so I'll love you more and more each day until my heart explodes from it!! I love how you're filled with love and I hope one day you realize how much I truly love you baby, I will always want to return the love you give out you're such a bubbly, caring, loving, sweet person and that's what made me want you from day one other than your sweet cute singing voice lol (YOO HELP ME IM CRINGING WRITING THIS MY GOD) I wanted to make this because you're not the best at keeping letters, or important things in a nice tidy place BUT! youre always on your phone so what other amazing way to store an important day in a romantic way... your phone!!! Iloveyousomuch Deki, I can't express how I feel to you, not with words, not with actions. no matter what I do it'll never show you 100% all my feelings I have for you. you are so difficult, stubborn, annoying, mean, and thats why I love you I love you have flaws, I love how you dont hide it, I love how it annoys me i rather it annoy me then not ever feel the annoyance i SOMETIMESSS get from you because the day that stops is when I lose everything ive ever wanted. I can never imagine restarting with anyone ever.. and I'm so scared of being away from you for too long I'm so scared of losing you. I used to be scared of death because the fear of nothing forever but now Im scared I wont be able to feel your warmth and that's more scary than anything ever. i'll never be scared of showing you off or putting in effort to show you, youre loved because you deserve it more than anyone i know, and after everything you been through I just want you to know I'll always be that someone you can talk to and come to, i'll never ever judge you or put you in a spot you cant come to me because you mean so fucking much to me id sit for hours in silence if you feel like you cant express yourself. i'll listen to you talk your head off even if its just for company i'll give input, ill engage in your convo ill be the person you need and want ill be there for you. I am so proud of you as everything you gained you deserve within all the hardwork you put. go you baby! have the most amazing birthday <3`;
+
+startBtn.addEventListener('click', () => {
+  startBtn.style.display = 'none';
+  banner.style.display = 'block';
+  message.style.opacity = 1;
+  bottomBox.style.opacity = 1;
+  teddy.style.display = 'block';
+
+  // START typing sound and music immediately
+  clickSound.play();
+  song.play();
+
+  typeParagraph();
+  fadeInPhotos();
+  generateSparkles();
+  launchConfetti();
+});
+
+function typeParagraph() {
+  let i = 0;
+  function type() {
+    if (i < paragraphText.length) {
+      typedParagraph.textContent += paragraphText.charAt(i);
+
+      clickSound.currentTime = 0;
+      clickSound.play();
+
+      i++;
+      setTimeout(type, 12);
+    }
+  }
+  type();
+}
+
+function fadeInPhotos() {
+  photos.forEach((p, i) => {
+    setTimeout(() => { p.style.opacity = 1; }, 600*i);
+  });
+}
+
+photos.forEach(container => {
+  const img = container.querySelector('img');
+  const cap = container.querySelector('.caption');
+
+  img.addEventListener('click', () => {
+    clickSound.currentTime = 0;
+    clickSound.play();
+    cap.style.display = cap.style.display === 'block' ? 'none' : 'block';
+  });
+});
+
+bottomBox.addEventListener('click', () => {
+  document.getElementById('secretMessage').style.display = 'block';
+});
+
+function generateSparkles() {
+  const icons = ['✨','💖','💗','🎀'];
+  for (let i = 0; i < 20; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.textContent = icons[Math.floor(Math.random()*icons.length)];
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.animationDuration = 4 + Math.random()*4 + 's';
+    document.body.appendChild(s);
+  }
+}
+
+/* Confetti */
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function launchConfetti() {
+  let pieces = Array.from({ length: 120 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 6 + 4,
+    d: Math.random() * 40,
+    color: ['#ff4d94','#ffcce6','#ff80bf'][Math.floor(Math.random()*3)]
+  }));
+
+  let angle = 0;
+  const interval = setInterval(() => {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p => {
+      ctx.beginPath();
+      ctx.fillStyle = p.color;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fill();
+    });
+    angle += 0.01;
+    pieces.forEach(p => {
+      p.y += Math.cos(angle + p.d) + 1;
+      p.x += Math.sin(angle);
+      if (p.y > canvas.height) p.y = -10;
+    });
+  }, 20);
+
+  setTimeout(() => clearInterval(interval), 4000);
+}
+</script>
+</body>
+</html>
